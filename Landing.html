@@ -1,0 +1,132 @@
+<!-- index.html Landing page-->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mente Clara — App de Meditación</title>
+  <!-- Enlazamos el CSS -->
+  <link rel="stylesheet" href="StyleL.css">
+</head>
+<body>
+  <!-- Header: contiene logo y navegación principal -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="logo">Mente Clara</h1>
+      <nav aria-label="Menú principal">
+        <ul class="nav">
+          <li><a href="#features">Características</a></li>
+          <li><a href="#plan">Planes</a></li>
+          <li><a href="#contact">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Sección principal / Hero -->
+  <section id="hero" class="hero">
+    <div class="container hero-grid">
+      <article class="hero-content">
+        <h2>Respira. Relájate. Encuentra tu centro.</h2>
+        <p>Descubre sesiones guiadas, temporizadores personalizables y sonidos relajantes para mejorar tu bienestar diario.</p>
+        <div class="cta-row">
+          <button id="trialBtn" class="btn primary">Prueba Gratis</button>
+          <button id="subscribeBtn" class="btn secondary">Suscríbete</button>
+        </div>
+      </article>
+
+      <aside class="hero-aside" aria-hidden="false">
+        <!-- Imagen decorativa: reemplaza por tu archivo SVG/PNG si lo deseas -->
+        <img src="Meditacion.jpg" alt="Ilustración de persona meditando" />
+      </aside>
+    </div>
+  </section>
+
+  <!-- Sección de características -->
+  <section id="features" class="features container">
+    <header>
+      <h3>Características</h3>
+      <p>Herramientas diseñadas para crear hábitos de calma.</p>
+    </header>
+
+    <div class="features-grid">
+      <article class="feature">
+        <h4>Sesiones guiadas</h4>
+        <p>Programas para principiantes y avanzados.</p>
+      </article>
+      <article class="feature">
+        <h4>Música y sonidos</h4>
+        <p>Ambientes y sonidos binaurales para concentración.</p>
+      </article>
+      <article class="feature">
+        <h4>Seguimiento</h4>
+        <p>Registra tu progreso diario y streaks.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Sección de plan / precios -->
+  <section id="plan" class="plan container">
+    <h3>Elige tu plan</h3>
+    <div class="plan-grid">
+      <article class="plan-card">
+        <h4>Gratis</h4>
+        <p>Acceso limitado y temporizadores básicos.</p>
+      </article>
+      <article class="plan-card featured">
+        <h4>Premium</h4>
+        <p>Sesiones completas, estadísticas y offline.</p>
+      </article>
+      <article class="plan-card">
+        <h4>Familiar</h4>
+        <p>Hasta 4 perfiles por cuenta.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Formulario de contacto (requerido: validación JS) -->
+  <section id="contact" class="contact container">
+    <h3>Contacto</h3>
+    <!-- Usamos <form> con roles y atributos para accesibilidad -->
+    <form id="contactForm" novalidate>
+      <label for="name">Nombre</label>
+      <input id="name" name="name" type="text" required placeholder="Tu nombre" />
+
+      <label for="email">Correo</label>
+      <input id="email" name="email" type="email" required placeholder="ejemplo@correo.com" />
+
+      <label for="message">Mensaje</label>
+      <textarea id="message" name="message" rows="4" required placeholder="¿En qué podemos ayudarte?"></textarea>
+
+      <div class="form-actions">
+        <button type="submit" class="btn primary">Enviar</button>
+        <button type="button" id="subscribeSmall" class="btn confetti">Suscríbete</button>
+      </div>
+
+      <!-- Mensajes de error en tiempo real -->
+      <ul id="formErrors" aria-live="assertive" class="form-errors"></ul>
+    </form>
+  </section>
+
+  <!-- Footer semántico -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> Mente Clara. Todos los derechos reservados.</p>
+      <p class="small">Diseñado con HTML5 semántico y validación en el cliente.</p>
+    </div>
+  </footer>
+
+  <!-- Modal de éxito (inicialmente oculto) -->
+  <div id="successModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-content" role="document">
+      <button class="modal-close" id="closeModal" aria-label="Cerrar">&times;</button>
+      <h2>¡Gracias!</h2>
+      <p>Tu mensaje ha sido enviado con éxito.</p>
+      <div id="confettiZone" class="confetti-zone" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
