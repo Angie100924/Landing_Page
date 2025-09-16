@@ -1,0 +1,122 @@
+/* styles.css
+   Estilos con Flexbox / Grid, animaciones CSS3 y diseño responsive.
+*/
+
+/* Variables CSS */
+:root{
+  --bg:#f7fbfb;
+  --accent:#ee37cf;
+  --accent-2:#faabed;
+  --text:#263238;
+  --muted:#65737e;
+  --card:#ffffff;
+}
+
+/* Reset muy básico */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color:var(--text);
+  background:linear-gradient(180deg, var(--bg), #ec93dd);
+  line-height:1.4;
+}
+
+/* Contenedor */
+.container{max-width:1100px;margin:0 auto;padding:1rem}
+
+/* Header */
+.site-header{
+  background:transparent;
+  position:sticky;
+  top:0;
+  z-index:10;
+  backdrop-filter: blur(6px);
+}
+.header-inner{display:flex;justify-content:space-between;align-items:center;padding:1rem}
+.logo{font-size: 3rem;color:var(--accent);}
+
+/* Navegación */
+.nav{list-style:none;display:flex;gap:1rem}
+.nav a{text-decoration:none;color:var(--muted);padding:.25rem .5rem;border-radius:6px;transition:all .2s}
+.nav a:hover{background:rgba(139,195,74,.08);color:var(--accent)}
+
+/* Hero */
+.hero{padding:2.5rem 0}
+.hero-grid{display:grid;grid-template-columns:1fr 380px;gap:2rem;align-items:center}
+.hero-content h2{font-size:2rem;margin-bottom:.5rem}
+.hero-content p{color:var(--muted);margin-bottom:1rem}
+
+.hero aside img {
+  width: 400px;   /* ancho fijo, cámbialo a tu gusto */
+  height: auto;   /* mantiene la proporción original */
+}
+
+/* Buttons */
+.btn{padding:.75rem 1rem;border-radius:12px;border:0;cursor:pointer;font-weight:600;transition:transform .15s, box-shadow .15s}
+.btn:active{transform:translateY(1px)}
+.primary{background:var(--accent);color:rgb(255, 255, 255);box-shadow:0 6px 18px rgba(27,50,40,.08)}
+.secondary{background:#ee37cf;border:2px solid var(--accent);color:rgb(255, 255, 255)}
+
+/* CTA row */
+.cta-row{display:flex;gap:.75rem}
+
+/* Features */
+.features{padding:2rem 0}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
+.feature{background:var(--card);padding:1rem;border-radius:12px;box-shadow:0 6px 18px rgba(39,50,48,.04);transition:transform .25s, box-shadow .25s}
+.feature:hover{transform:translateY(-6px);box-shadow:0 18px 30px rgba(43,60,53,.08)}
+
+/* Plans */
+.plan{padding:2rem 0}
+.plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
+.plan-card{background:var(--card);padding:1rem;border-radius:12px;text-align:center;box-shadow:0 6px 18px rgba(60,70,70,.04)}
+.plan-card.featured{border:2px solid var(--accent-2);transform:scale(1.02)}
+
+/* Contact form */
+.contact{padding:2rem 0}
+form{display:grid;gap:.5rem;max-width:640px}
+label{font-weight:600}
+input,textarea{padding:.6rem;border-radius:8px;border:1px solid #dfecea;background:white}
+.form-actions{display:flex;gap:.5rem;align-items:center;margin-top:.5rem}
+.form-errors{color:#e70bb8;margin-top:.25rem;list-style:square;padding-left:1rem}
+
+/* Footer */
+.site-footer{padding:1.5rem 0;background:transparent;margin-top:2rem;color:var(--muted)}
+.footer-inner{display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap}
+.small{font-size:.85rem}
+
+/* Modal */
+.modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:1rem;visibility:hidden;opacity:0;transition:opacity .25s}
+.modal[aria-hidden="false"]{visibility:visible;opacity:1;background:rgba(10,10,10,.25)}
+.modal-content{background:var(--card);padding:1.25rem;border-radius:12px;width:min(520px,95%);position:relative;overflow:hidden;box-shadow:0 20px 50px rgba(20,30,20,.18)}
+.modal-close{position:absolute;right:.5rem;top:.4rem;border:0;background:transparent;font-size:1.4rem;cursor:pointer}
+
+/* Confetti zone: zona donde caerán los divs generados por JS */
+.confetti-zone{position:absolute;inset:0;pointer-events:none}
+
+/* Animaciones CSS */
+@keyframes floatIn {
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:none}
+}
+.hero-content, .feature, .plan-card{animation:floatIn .6s ease both}
+
+/* Confetti piece animation (cada pieza usará transform y animation-delay en JS) */
+@keyframes confettiFall {
+  0%{transform:translateY(-10vh) rotate(0deg);opacity:1}
+  100%{transform:translateY(120vh) rotate(720deg);opacity:0}
+}
+
+/* Responsive: pantallas pequeñas */
+@media (max-width:800px){
+  .hero-grid{grid-template-columns:1fr; text-align:center}
+  .hero-aside{order: -1}
+  .features-grid{grid-template-columns:1fr}
+  .plan-grid{grid-template-columns:1fr}
+  .header-inner{flex-direction:column;gap:.5rem}
+  .nav{flex-wrap:wrap;justify-content:center}
+}
+
+/* Focus a11y */
+a:focus, button:focus, input:focus, textarea:focus{outline:3px solid rgb(231, 42, 168);outline-offset:2px}
